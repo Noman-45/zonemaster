@@ -2,10 +2,11 @@
 
 The following components are available [Docker Hub], and can conveniently be
 downloaded and run without any installation. Through [Docker], Zonemaster can
-be run on Linux, macOS and Windows.
+be run on Linux, MacOS and Windows.
 
 - Zonemaster-CLI: see [Using Zonemaster-CLI Docker] for how to run Zonemaster-CLI on [Docker].
-- Zonemaster-Backend: see [Using Zonemaster-Backend Docker] for how to run Zonemaster-Backend on [Docker].
+- Zonemaster-Backend: see [Using Zonemaster-Backend Docker] for how to run Zonemaster-Backend
+and Zonemaster-CLI on [Docker].
 
 To build your own Docker image, see the [Docker Image Creation] documentation.
 
