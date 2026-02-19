@@ -368,7 +368,7 @@ translators and includes features like translation memory and suggestions.
 ### Exporting Translations
 
 1. After completing your translations, save the file.
-3. Save the file with the appropriate language code in the `/messages` directory
+3. Save the file with the appropriate language code in the `messages` directory
 4. Verify that the exported JSON file maintains the same structure as the
    original English file
 
@@ -385,15 +385,15 @@ Now go back to [Translate messages] to commit your update to Git.
 
 ## Overview of the Translation System
 
-Zonemaster-GUI uses [Paraglide] for internationalization (i18n). The translation
-system works as follows:
+Zonemaster-GUI uses a custom built Vite plugin for internationalization (i18n).
+The translation system works as follows:
 
-1. Translation strings are stored in JSON files in the `/messages` directory, one
+1. Translation strings are stored in JSON files in the `messages` directory, one
    file per language
-2. The Paraglide compiler reads these files and generates JavaScript functions in
-   the `src/paraglide` directory
+2. The Vite plugin reads these files and generates JavaScript functions in
+   the `src/messages` directory
 3. These functions are imported and used in the code to display translated text
-4. The current language is determined using the `languageTag()` function from the
+4. The current language is determined using the `getLocale()` function from the
    runtime
 5. The available languages and default language are configured in `config.ts`
 
@@ -404,7 +404,7 @@ system works as follows:
 
 To update translations for an existing language:
 
-1. Edit the corresponding JSON file in the `/messages` directory (e.g.,
+1. Edit the corresponding JSON file in the `messages` directory (e.g.,
    `messages/fr.json` for French)
 2. See [Building a custom Zonemaster-GUI] for how to build a new Zonemaster-GUI
    with the changes.
@@ -425,13 +425,14 @@ To add translations for a new string:
 
 To add a new language to Zonemaster-GUI:
 
-1. Create a new JSON file in the `/messages` directory with the language code as
+1. Create a new JSON file in the `messages` directory with the language code as
    the filename (e.g., `messages/de.json` for German)
-2. Copy the content from `messages/en.json` and translate all the strings
+2. Copy the content from `messages/en.json` (the English source file) and translate
+   all the strings
 3. Update the following files to include the new language code:
-   - `project.inlang/settings.json`: Add the language code to the `languageTags`
-     array
    - `config.ts`: Add the language code to the `enabledLanguages` array
+   - `src/themes/default/LanguageSwitcher.astro`: Add the language code to
+     the `languageLabels` dictionary
 4. See [Building a custom Zonemaster-GUI] for how to build a new Zonemaster-GUI
    with the changes.
 5. Test your changes by running the application and switching to the new language
@@ -451,32 +452,22 @@ const config: Config = {
     // other configuration options...
 };
 ```
+### src/themes/default/LanguageSwitcher.astro
 
-### project.inlang/settings.json
+This file contains the mapping of language codes to actual language strings to be
+displayed by the language switcher:
 
-This file configures the Paraglide translation system:
-
-```json
-{
-  "$schema": "https://inlang.com/schema/project-settings",
-  "sourceLanguageTag": "en",
-  "languageTags": [
-    "en",
-    "da",
-    "es",
-    "fi",
-    "fr",
-    "nb",
-    "sv"
-  ],
-  "modules": [
-    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js",
-    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@latest/dist/index.js"
-  ],
-  "plugin.inlang.messageFormat": {
-    "pathPattern": "./messages/{languageTag}.json"
-  }
-}
+```typescript
+const languageLabels = {
+    en: 'English',
+    sv: 'Svenska',
+    es: 'Español',
+    da: 'Dansk',
+    fr: 'Français',
+    nb: 'Norsk Bokmål',
+    fi: 'Suomi',
+    sl: 'Slovenščina',
+};
 ```
 
 ## Using Translations in Code
@@ -485,11 +476,11 @@ Translations are used in the code by importing the message functions from the
 generated JavaScript files:
 
 ```javascript
-import * as m from '../../paraglide/messages.js';
-import { languageTag } from '../../paraglide/runtime';
+import * as m from '@/messages';
+import { getLocale } from '@/messages';
 
 // Get the current language
-const currentLanguage = languageTag();
+const currentLanguage = getLocale();
 
 // Use a translation
 const translatedText = m.startTestNav();
@@ -521,7 +512,6 @@ application to compile the translations. See
 [Install Git on Windows]:                      https://git-scm.com/install/windows
 [New issue GUI]:                               https://github.com/zonemaster/zonemaster-gui/issues/new
 [Overview]:                                    #overview
-[Paraglide]:                                   https://paraglide.io/
 [PoEdit]:                                      https://poedit.net/
 [Software preparation]:                        #software-preparation
 [Technical details]:                           #technical-details
