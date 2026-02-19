@@ -385,12 +385,12 @@ Now go back to [Translate messages] to commit your update to Git.
 
 ## Overview of the Translation System
 
-Zonemaster-GUI uses a custom built Vite plugin for internationalization (i18n).
+Zonemaster-GUI uses a custom built [Vite] plugin for internationalization (i18n).
 The translation system works as follows:
 
 1. Translation strings are stored in JSON files in the `messages` directory, one
    file per language
-2. The Vite plugin reads these files and generates JavaScript functions in
+2. The [Vite] plugin reads these files and generates JavaScript functions in
    the `src/messages` directory
 3. These functions are imported and used in the code to display translated text
 4. The current language is determined using the `getLocale()` function from the
@@ -522,5 +522,6 @@ application to compile the translations. See
 [UTF-8 format]:                                https://en.wikipedia.org/wiki/UTF-8
 [Updates to msgids]:                           #updates-to-msgids
 [Using PoEdit for Translations]:               #using-poedit-for-translations
+[Vite]:                                        https://vite.dev/
 [Wikipedia]:                                   https://www.wikipedia.org/
 [Zonemaster-GUI repository]:                   https://github.com/zonemaster/zonemaster-gui
