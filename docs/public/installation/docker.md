@@ -1,6 +1,6 @@
 # Docker
 
-The following components are available [Docker Hub], and can conveniently be
+The following components are available on [Docker Hub], and can conveniently be
 downloaded and run without any installation. Through [Docker], Zonemaster can
 be run on Linux, MacOS and Windows.
 
