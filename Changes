@@ -5,14 +5,14 @@ v2025.2.1 2026-03-04
  [Release information]
  - Fixes in Zonemaster-Engine and Zonemaster-GUI.
 
- [Fixes]
- - Updated various documents (#1464)
-
  [Breaking changes]
  - See release notes of v2025.2 release.
 
  [Deprecations]
  - See release notes of v2025.2 release.
+
+ [Fixes]
+ - Updated various documents (#1464)
 
  [Zonemaster product]
  - This version of Zonemaster also consists of the following components. For
