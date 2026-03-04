@@ -4,13 +4,13 @@
 - Fixes in [Zonemaster-Engine] and [Zonemaster-GUI].
 
 ### \[Breaking changes\]
-- See release notes of v2025.2 release.
+- None for this release
 
 ### \[Deprecations\]
-- See release notes of v2025.2 release.
+- None for this release
 
 ### \[Fixes\]
-- Updated various documents ([#1464])
+- Add documentation on running Zonemaster-Backend through Docker, and update documentation on Zonemaster-GUI translation ([#1464])
 
 ### \[Zonemaster product\]
 This version of Zonemaster also consists of the following components. For each component, see its Changes file or Github release notes for complete release information.
