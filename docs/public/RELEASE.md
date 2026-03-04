@@ -1,7 +1,7 @@
 # Release v2025.2.1 (2026-03-04)
 
 ### \[Release information\]
-- Fixes in [Zonemaster-Engine] and [Zonemaster-GUI].
+- Fixes in [Zonemaster-LDNS], [Zonemaster-Engine] and [Zonemaster-GUI].
 
 ### \[Breaking changes\]
 - None for this release
@@ -10,7 +10,7 @@
 - None for this release
 
 ### \[Fixes\]
-- Add documentation on running Zonemaster-Backend through Docker, and update documentation on Zonemaster-GUI translation ([#1464])
+- Adds documentation on running Zonemaster-Backend through Docker, and update documentation on Zonemaster-GUI translation ([#1464])
 
 ### \[Zonemaster product\]
 This version of Zonemaster also consists of the following components. For each component, see its Changes file or Github release notes for complete release information.
